@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>css常见选择器</title>
+
+    <style type="text/css">
+
+        /*1.标签选择器*/
+        body{
+            font-size:12px;
+            font-family: Arial,Verdana,"\5b8b\4f53 ";
+            color: #666666;
+        }
+        dd{
+            color: pink;
+        }
+        /*2.类选择器*/
+        .test1{
+            color: #ffff00;
+        }
+        /*3.id选择器*/
+        #test1{
+            color: rgb(255,0,255);
+        }
+        /*4.后代选择器*/
+        .div_test1 dt{
+            color: skyblue;
+        }
+        /*5.交集选择器*/
+       dd.test1{
+            color: yellowgreen;
+        }
+       dd#test_in{
+           color: greenyellow;
+       }
+        /*6.并集选择器*/
+        h1,h2,h3,h4,h5,h6{
+            font-weight: normal;
+        }
+        /*7.通配符*选择器（一般不用）*/
+
+        /*---------------需要考虑兼容的选择器-----------------*/
+        /*1.儿子选择器*/
+        .test2>ul{
+            color: red;
+        }
+        /*2.序列选择器*/
+        ul li:first-child{
+            color: black;
+        }
+        ul li:nth-child(3){
+            color: aqua;
+        }
+        ul li:last-child{
+            color: yellow;
+        }
+        /*3.下一个兄弟选择器*/
+        .li3+li{
+            color: purple;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="div_test1" id="div_test1">
+    <dl>
+        <dt>css中常见的选择器</dt>
+        <dd>1.标签选择器</dd>
+        <dd class = "test1">2.类选择器</dd>
+        <dd id="test1">3.id选择器</dd>
+        <dd>4.后代选择器</dd>
+        <dd class="test_in" id="test_in">5.交集选择器</dd>
+        <dd >6.并集选择器</dd>
+        <dd>7.通配符*选择器</dd>
+    </dl>
+
+    <dl>
+        <dt>需要考虑兼容的选择器</dt>
+        <dd>1.儿子选择器（IE7开始兼容）</dd>
+        <dd>2.序列选择器（IE8开始兼容）</dd>
+        <dd>3.下一个兄弟选择器（IE7开始兼容）</dd>
+    </dl>
+    <div class="test2">
+        <ul class="ul_test">
+            <li>1</li>
+            <li>2</li>
+            <li class="li3">3</li>
+            <li >4</li>
+            <li>5</li>
+        </ul>
+    </div>
+
+</div>
+
+
+</body>
+
+</html>
