@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!--
+
+一、标准文档流
+
+*定义：
+类别在word上编辑文字，我们自能从上而下的依次编辑，不能像photoShop那样想从哪里开始就从哪里开始。
+
+*标准文档流的特征：
+
+1.空白折叠现象：不管一个标签里面有多少空格最终都被折叠成一个。
+2.高矮不齐，底边对其：当当个标签元素高矮不一样时，对其方式是底边对齐。
+3.自动换行：一行排不满就移动到下一行。
+
+*元素（标签）的分类：
+
+按使用属性分类：
+1.容器级标签：div ul ol dl li dd dt h系列（作容器使用）
+2.文本级标签：p span u i b em strong a（放文本）
+
+按标准文档流：
+1.块级标签：div ul ol dl li dd dt h系列 p（可以设置宽高，默认宽度为浏览器整个宽度，默认占一行）
+2.行内标签：span u i b em strong a （不能接受宽高包括margin，宽高与内容的包裹相关。）
+
+可以发现两种分类只是在p标签上的划分有点不同，其他的标签基本归属一样。
+
+*块级元素和行内元素之间的转换：
+使用display: block|inline 可以将两种标准流标签相互转换。
+
+*元素的浮动：
+在标准文档流中，即使两个块元素的宽度小于浏览器宽度也不会并排放置。如何让两个块级元素并排就要使用到浮动属性。
+
+
+
+浮动后存在问题：margin失效(下一个元素的)，padding有效。
+
+
+-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>css标准文档流学习</title>
+
+    <style type="text/css">
+
+    </style>
+
+</head>
+
+
+<body>
+
+<!--特征-->
+
+<div>
+    <p>空白折叠现象 这里有多个空格</p>
+    <img style="width:200px" src="../res/img/purple.jpg" alt="小图"/>
+    <img style="width:400px" src="../res/img/large.jpg" alt="大图"/>
+</div>
+
+<!--转换-->
+
+<div>
+    <h1 style="background: pink;">块级元素默认占用一行</h1>
+    <p style="background: pink;width: 400px;">p也是块级元素</p>
+    <span style="background: pink; width: 400px; margin-top: 100px">行内元素，不接受宽高</span>
+    <span style="background: pink; display: block ;width: 400px;">span行内元素，转换成块级元素</span>
+    <p style="background: pink;width: 400px;display:inline;">p块级元素，转换成行级元素</p>
+
+</div>
+
+<!--浮动-->
+
+<div style="width: 400px ;height: 400px; background: pink; float: left"></div>
+<div style="width: 400px ;height: 400px; margin-top:20px ;background: purple; float: left"></div>
+
+
+</body>
+
+
+</html>

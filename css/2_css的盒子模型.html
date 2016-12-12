@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!--
+
+一、五个重要属性
+
+1.width:内容的宽度（而不是盒子的宽度）。
+2.height:内容的高度（而不是盒子的高度）。
+3.margin:外边距
+4.padding:内边距
+5.border:边框
+
+盒子的宽度=width+marginLeft+marginRight+paddingLeft
+            +paddingRight+borderLeft+borderRight
+
+二、小结
+
+1.padding是是在背景色内的，margin是在背景色外的。
+2.上右下左法则：
+ margin: 20px 0px 10px 30px; 对应margin-top:20px;margin-right:0px;margin-bottom:10px;margin-left:30px;
+ margin: 20px;               对应margin-top:20px;margin-right:20px;margin-bottom:20px;margin-left:20px;
+ margin: 20px 10px;          对应margin-top:20px;margin-right:10px;margin-bottom:20px;margin-left:10px;
+ margin: 20px 10px 5px;      对应margin-top:20px;margin-right:10px;margin-bottom:5px;margin-left:10px;
+3.小属性可以从重叠大属性，margin:0px;margin-top:20px;margin top 为20px。
+4.border的三要素：粗细、线性、颜色，这些要素可以排列组合式的拆分。颜色不写默认是黑色，如果是另外的两个属性不写
+  就显示不出来了。
+
+-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>css的盒子模型学习</title>
+
+    <style type="text/css">
+
+        /*整体认知*/
+        .box1 {
+            background: skyblue;
+            width: 200px;
+            height: 200px;
+            margin-left: 20px;
+            margin-right: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            border: dotted #f1f1f1 5px;
+        }
+
+        /*上右下左的原则*/
+        /*.box2{
+            background: skyblue;
+            width: 200px;
+            height: 200px;
+            margin: 20px 0px 20px 10px;
+        }*/
+
+        /*.box2{
+            background: skyblue;
+            width: 200px;
+            height: 200px;
+            margin: 20px 10px 100px;
+        }*/
+
+        .box2{
+            background: skyblue;
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            margin-left: 20px;/*小属性重叠大属性*/
+        }
+
+       /* .box3{
+            background: skyblue;
+            width: 200px;
+            height: 200px;
+            border: 5px solid pink;
+        }*/
+
+        .box3{
+            background: skyblue;
+            width: 200px;
+            height: 200px;
+            border-width: 5px;
+            border: dotted;
+            border-top-color: red;
+        }
+
+
+
+
+    </style>
+
+
+</head>
+
+
+<body>
+
+<div class="box1">
+
+    <p>内容区域内容区域内容区域内容区域内容区域内容区域内容区域内容区域内容区域内容区域内容区域内容区域内容区域</p>
+
+</div>
+
+
+<div class="box2">
+
+    <p>内容区域内容区域内容区域内容区域内容区域内容区域内容区域内容区域内容区域内容区域内容区域内容区域内容区域</p>
+
+</div>
+
+<div class="box3">
+
+    <p>内容区域内容区域内容区域内容区域内容区域内容区域内容区域内容区域内容区域内容区域内容区域内容区域内容区域</p>
+
+
+
+</body>
+
+
+</html>
