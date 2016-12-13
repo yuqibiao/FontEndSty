@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!--
+
+*元素的浮动：
+
+在标准文档流中，即使两个块元素的宽度小于浏览器宽度也不会并排放置。
+浮动的框可以左右移动，直至它的外边缘遇到包含框或者另一个浮动框的边缘
+如何让两个块级元素并排就要使用到浮动属性。(float:left|right)
+
+*浮动的特征：
+1.脱标：浮动的元素脱离原有的标准流。
+2.贴边：脱标的元素相互贴靠，如果此行宽度不足则移动到下一行，而且即使有足够的高度空间，
+       该元素也不往里面插。
+3.字围：浮动脱标之后的元素不会把字挡住，字会动态的绕过该区域。
+
+*浮动带来的问题：
+但要浮动元素的祖先元素没有设置高度的时候，问题就来了。我们本意是想让子元素去自适应的撑
+大祖先元素，但是由于元素被浮动了这样就撑大不了容器，针对这一问题才有下面的浮动清除。
+
+*清除浮动的几种方法
+1.给祖先元素加宽高：
+实际开发中不实用，但是它确实从本质（容器没有宽高，浮动元素无法被束缚）上解决的问题。
+2.clear:left|right|both
+给浮动元素的容器添加该属性，使得浮动间不相互影响，但是存在margin失效的问题。
+3.外墙法：
+在有浮动容器的外部在加一个容器添并加上clear属性，形成一道“隔墙”。但是background仍然失效。
+只是元素显示到了想要的位置，但是容器仍然没有宽高。
+4.内墙法：
+在有浮动容器的内部在加一个容器添并加上clear属性，形成一道“隔墙”。容器被撑大了，background
+也生效了
+5.overflow:hidden
+本意是用来清除溢出盒子外的文字，但是这里被用来清除浮动具有奇效，只是在IE6中使用需要注意一下
+加上_zoom:1,_xxx是IE6的hack标签，只有IE6能识别。
+
+
+*注意：
+1.未浮动的元素还是遵循标准流的顺序，接着上一个标准流的元素排列。
+2.如果一个元素要浮动，它的祖先元素必须要有高度，有高度的盒子才能浮动。没有高度的容器是
+  关不住浮动元素的。
+
+-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>css的浮动和清除</title>
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .w200 {
+            width: 200px;
+        }
+
+        .h100 {
+            height: 100px;
+        }
+
+        .h400 {
+            height: 400px;
+        }
+
+        .box0 {
+            width: 0px;
+            height: 0px;
+        }
+
+        .box100 {
+            width: 100px;
+            height: 100px;
+        }
+
+        .box200 {
+            width: 200px;
+            height: 200px;
+        }
+
+        .box400 {
+            width: 400px;
+            height: 400px;
+        }
+
+        .box500X200 {
+            width: 500px;
+            height: 200px;
+        }
+
+        .b_pink {
+            background: pink;
+        }
+
+        .b_purple {
+            background: purple;
+        }
+
+        .b_red {
+            background: red;
+        }
+
+        .l_float {
+            float: left;
+        }
+
+        .r_float {
+            float: right;
+        }
+
+        .m_top20 {
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            padding: 10px;
+            float: left;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!--浮动的特征-->
+
+<!--1.脱标-->
+<!--<div class="box200 b_pink l_float">
+    <div class="box100 b_red l_float">我脱标了</div>
+    <div class="box200 b_purple"></div>
+</div>-->
+
+<!--2.贴边-->
+<!--<div class="w200 h400 b_purple l_float"></div>
+<div class="box100 b_red l_float"></div>
+<div class="w200 h100 b_purple l_float"></div>
+<div class="box0"></div>-->
+
+<!--3.字围-->
+<!--<div class="b_pink">
+     <div class="box100 b_red l_float">字围测试（脱标）</div>
+     <div class="w200 b_purple">
+         <p >浮动脱标之后的元素不会把字挡住，字会动态的绕过该区域。浮动脱标之后的元素不会把字挡住，字会动态的绕过该区域。
+             浮动脱标之后的元素不会把字挡住，字会动态的绕过该区域。浮动脱标之后的元素不会把字挡住，字会动态的绕过该区域。
+         </p>
+     </div>
+</div>-->
+
+
+<!--浮动带来的问题：
+理想情况下两个ul在不同的行，但是结果是li都并排显示了。
+原因是本来div的预期是由原本的子元素来撑大其内容，自适应
+大小的，但是由于元素浮动了，可以理解为不受原div容器的控制。
+就不能把容器div的宽高撑起来。
+-->
+<!--div class="box500X200 b_pink m_top20">
+    &lt;!&ndash;
+    &ndash;&gt;
+    <div class=" m_top20 p_test">
+        <ul>
+            <li>html</li>
+            <li>css</li>
+            <li>js</li>
+            <li>react</li>
+        </ul>
+    </div>
+    <div class="m_top20 p_test">
+        <ul>
+            <li>java</li>
+            <li>android</li>
+            <li>c</li>
+        </ul>
+    </div>
+</div>-->
+
+
+<!--浮动带来问题的解决：清除浮动-->
+<!--1.给祖先元素添加宽高：
+人为的给容器设置宽高，这样就限制住了浮动元素的浮动范围，
+浮动元素只能在div容器的宽高范围内浮动。也可以给ul设置宽高。
+
+-->
+<!--<div class="box500X200 b_pink m_top20 l_float">
+    <div class="p_test" style="width: 400px; height: 50px; background: #f1f1f1;">
+        <ul>
+            <li>html</li>
+            <li>css</li>
+            <li>js</li>
+            <li>react</li>
+        </ul>
+    </div>
+    <div class="p_test" style="width: 400px; height: 50px; margin-top:10px; background: #f1f1f1;">
+        <ul>
+            <li>java</li>
+            <li style="margin-left: 50px;">android</li>
+            <li>c</li>
+        </ul>
+    </div>
+    <div><p>底部是否显示正常，另起一行则是正常的。</p></div>
+</div>-->
+
+<!--2.clear:left|right|both
+上面的一种方法能本质上解决浮动带来的影响，但是宽高被写死，
+显然在实际开发中是不太现实的。这种办法解决了位置显示正确的问题，
+但是并非本质上解决了问题。div容器的宽高还是没被撑起来(通过border可以看出)。
+浮动后的容器margin失效，但是加了border后就有效了，不知道为什么。
+-->
+<!--<div style="clear: both; background: #f1f1f1;">
+    <ul>
+        <li>html</li>
+        <li>css</li>
+        <li>js</li>
+        <li>react</li>
+    </ul>
+</div>
+<div style="clear: both; background: #f1f1f1; margin-top: 100px;">
+    <ul>
+        <li>java</li>
+        <li style="margin-left: 50px">android</li>
+        <li>c</li>
+    </ul>
+</div>
+<div class="footer"><p>底部是否显示正常，另起一行则是正常的。</p></div>-->
+
+<!--3.外墙法：
+解决方法2中margin失效的情况。但是可以看到背景还是失效。即还是没有被撑出高度。
+-->
+<!--<div class="box500X200 b_pink m_top20 l_float">
+    <div class="p_test" style="background: #f1f1f1;">
+        <ul>
+            <li>html</li>
+            <li>css</li>
+            <li>js</li>
+            <li>react</li>
+        </ul>
+    </div>
+    <div style="clear: both;"></div>
+    <div class="p_test" style="background: #f1f1f1; margin-top: 50px">
+        <ul>
+            <li>java</li>
+            <li style="margin-left: 50px">android</li>
+            <li>c</li>
+        </ul>
+    </div>
+    <div style="clear: both;"></div>
+    <div class="footer"><p>底部是否显示正常，另起一行则是正常的。</p></div>
+</div>-->
+
+<!--4.内墙法：
+解决外墙法背景失效的问题。div容器被撑出高度了。
+-->
+<!--<div class="box500X200 b_pink m_top20 l_float">
+    <div class="p_test" style="background: #f1f1f1;">
+        <ul>
+            <li>html</li>
+            <li>css</li>
+            <li>js</li>
+            <li>react</li>
+        </ul>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="p_test" style="background: #f1f1f1; margin-top: 50px">
+        <ul>
+            <li>java</li>
+            <li style="margin-left: 50px">android</li>
+            <li>c</li>
+        </ul>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="footer"><p>底部是否显示正常，另起一行则是正常的。</p></div>
+</div>-->
+
+<!--5.使用overflow:hidden属性:
+和内墙法起到相同的作用。div容器被撑出高度了。
+IE6不支持用overflow:hidden;来清除浮动的解决办法，以毒攻毒。追加一条_zoom:1;
+_xxx是IE6的hack标签，只有IE6能识别。
+
+-->
+<div class="box500X200 b_pink m_top20 l_float">
+    <div class="p_test" style="overflow:hidden;  background: #f1f1f1;">
+        <ul>
+            <li>html</li>
+            <li>css</li>
+            <li>js</li>
+            <li>react</li>
+        </ul>
+    </div>
+    <div class="p_test" style="overflow:hidden; background: #f1f1f1; margin-top: 50px">
+        <ul>
+            <li>java</li>
+            <li style="margin-left: 50px">android</li>
+            <li>c</li>
+        </ul>
+    </div>
+    <div class="footer"><p>底部是否显示正常，另起一行则是正常的。</p></div>
+</div>
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

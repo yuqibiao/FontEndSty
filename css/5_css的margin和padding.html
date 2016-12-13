@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!--
+
+*margin的塌陷
+在标准流中，两个容器同时设置了margin,比如上面的容器设置了margin-bottom
+下面的容器设置了margin-top,则以比较大的为准。如果不在标准流不存在此现象，此时是相互叠加。
+
+-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>margin和padding的比较使用</title>
+
+    <style type="text/css">
+
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box100 {
+            width: 100px;
+            height: 100px;
+        }
+
+        .box200 {
+            width: 200px;
+            height: 200px;
+        }
+
+        .b_pink {
+            background: pink;
+        }
+        .b_purple{
+            background: purple;
+        }
+
+        .m_top100{
+            margin-top: 100px;
+        }
+        .m_bottom50{
+            margin-bottom: 50px;
+        }
+        .l_float{
+            float: left;
+        }
+        .b_clear{
+            clear: both;
+        }
+        .center{
+            margin: 0 auto;
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+<!--1.margin塌陷现象
+下面例子它们之间的间距是100px而不是150px
+-->
+<div class="box100 b_pink  m_bottom50 "></div>
+<div class="box100 b_pink  m_top100 "></div>
+
+<!--2.不是标准流就不会存在塌陷现象
+下面例子它们之间的间距是150px
+-->
+<p>-------------------------华丽的分割线--------------------------</p>
+<div class="b_purple" style="width: 100px;height: 400px;">
+    <div class="box100 b_pink m_bottom50 l_float">
+        <div class="b_clear"></div>
+    </div>
+    <div class="box100 b_pink m_top100 l_float"></div>
+</div>
+
+<!--3.盒子的居中:margin: 0 auto;
+该盒子必须要有宽高
+-->
+<p>-------------------------华丽的分割线--------------------------</p>
+<div class="box100 b_pink center "></div>
+</body>
+
+<!--4.善于使用padding而非padding
+margin这个属性，本质上描述的是兄弟和兄弟之间的距离； 最好不要用这个marign表达父子之间的距离。
+-->
+<div>
+    <div class="box200 b_purple ">
+        <!--父容器没有border此时margin-top移动的是父div-->
+        <div class="box100 b_pink " style="margin-top: 20px;"></div>
+    </div>
+    <div class="box200 b_purple " style="border: 10px red dashed">
+        <!--父容器没有border此时margin-top移动的是子div-->
+        <div class="box100 b_pink" style="margin-top: 20px;"></div>
+    </div>
+</div>
+
+
+</html>
+
+
+
+
+
