@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!--
+
+定位分为相对定位（relative）、绝对定位（absolute）、固定定位（fixed）
+
+1.相对定位
+a.相对与盒子原来的位置进行移动（主要是用于盒子位置的微调）。
+b.相对定位不脱标，真实位置仍在原处，只不过影子出去了，可以到处飘。
+c.不影响margin什么的，理解为当位置被设定好后，相对于设定好的位置再移动。
+
+2.绝对定位
+a.绝对定位的元素脱离标准流，相对的位置是此时浏览器窗口的位置，当窗口放大缩小
+的调整的时候，相对内容的位置也在变化。但是可以跟着浏览器的滚动条滚动。
+b.绝对定位之后，标签就不区分所谓的行内元素、块级元素了，不需要display:block;
+就可以设置宽、高了。
+c.浏览器滚动的时候，绝对定位的盒子的位置是会跟着变的。
+
+3.固定定位
+和绝对定位不同的是，固定定位之后的盒子不在随滚动条移动。参考点就是浏览器窗口。
+IE6不兼容。
+
+* z-index：
+a.当多个浮动的盒子重叠的时候，z-index大的在上面，默认值是0。
+b.z-index值一样时，谁的style后面写的就谁在上面。
+c.如果一个盒子的父盒子z-index比别人小，自己在大也是在别人的下面。
+
+-->
+
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>定位的学习</title>
+
+    <style type="text/css">
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .box100{
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+        .m_top50{
+            margin-top: 50px;
+        }
+        /*
+        1.相对定位的测试
+        现象：下面的盒子不往上移动，即使留出来了足够的空间。
+        */
+        .r_test1{
+            position: relative;
+            left: 120px;
+            top: 50px;
+        }
+        /*
+        2.绝对定位的测试
+        */
+        .a_test1{
+            position: absolute;
+            left: 120px;
+            top:50px;
+        }
+        .a_test2{
+            position: absolute;
+            bottom: 100px;
+            right: 100px;
+        }
+        /*
+        3.固定定位的测试
+        */
+        .f_test2{
+            position: fixed;
+            bottom: 250px;
+            right: 100px;
+            /*这个css前面写的却在上面*/
+            z-index: 100;
+        }
+        /*
+        z-index
+        */
+        .f_test1{
+            position: fixed;
+            bottom: 200px;
+            right: 50px;
+            background: red;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="box100"></div>
+<div class="r_test1 box100 m_top50"><p>相对定位</p></div>
+<div class="box100 m_top10"></div>
+
+<p>-------------------------并不华丽的分割线----------------------</p>
+
+<div class="box100"></div>
+<div class="a_test1 box100"><p>绝对定位</p></div>
+<span class="a_test2 box100">span可以设置宽高了,注意bottom的计算规则！</span>
+<div class="box100"></div>
+
+<p>-------------------------并不华丽的分割线----------------------</p>
+
+<div class="box100"></div>
+<div class="f_test1 box100"><p>固定定位</p></div>
+<span class="f_test2 box100">固定定位 span可以设置宽高了</span>
+<div class="box100"></div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

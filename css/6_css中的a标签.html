@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!--
+
+*伪类
+同一个标签根据用户的某种状态不同有不同的样式，就被称作伪类。
+类就是工程师加的，比如div属于box类，很明确，就是属于box类。
+但是a属于什么类？不明确。因为要看用户有没有点击、有没有触碰。
+所以，就叫做“伪类”。伪类用冒号来表示。
+
+:link  	表示， 用户没有点击过这个链接的样式。 是英语“链接”的意思。
+:visited	表示， 用户访问过了这个链接的样式。 是英语“访问过的”的意思。
+:hover	表示， 用户鼠标悬停的时候链接的样式。 是英语“悬停”的意思。
+:active	表示， 用户用鼠标点击这个链接，但是不松手，此刻的样式。 是英语“激活”的意思。
+
+*注意
+1.a中伪类的顺序要正确，[l]o[v]e [h][a]te 记忆方式（爱恨准则）。
+2.a标签中，描述盒子； 伪类中描述文字的样式、背景。最标准的，就是把link、visited、
+  hover都要写。但是前端开发工程师在大量的实践中，发现不写link、visited浏览器也挺兼容。
+3.所有的a不继承color、text-decoration、cursor属性，原因是浏览器会有默认的a:link、
+  a:visited等样式。就覆盖掉了父类的这些属性。看起来就像没继承一样。
+
+
+-->
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>a标签的美化</title>
+
+    <style type="text/css">
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*1.伪类的顺序*/
+        .test1 a:link{
+            color: pink;
+        }
+        .test1 a:visited{
+            color: red;
+        }
+        .test1 a:hover{
+            color: green;
+        }
+        .test1 a:active{
+            color: blue;
+        }
+
+        /*2.简化后的写法*/
+        .test2 a{
+            width: 200px;
+            float: left;
+           /* display: block;*/
+            background: #f1f1f1;
+            text-align: center;
+            padding: 10px 0;
+            text-decoration: none;
+            color: pink;
+        }
+        .test2 a:hover{
+            color: red;
+        }
+
+        /*3.不继承text-/font-属性*/
+        .test3{
+            color: #f1f1f1;
+            text-decoration: none;
+            font-size: 40px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="test1">
+
+    <a href="http://www.163.com">去网易</a>
+    
+</div>
+
+<div class="test2">
+    <a href="http://www.baidu.com">去百度</a>
+</div>
+
+<div class="test3">
+    <a href="http://www.sina.com">去新浪</a>
+</div>
+
+</body>
+</html>

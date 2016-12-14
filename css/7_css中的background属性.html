@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!--
+
+*基本使用：
+background:  #f1f1f1 repeat-y url(../res/img/purple.jpg);
+以上是简写方式，分别代表background-color、background_repeat、background-image
+这三者的顺序不是固定的，可随意排列。
+
+*background_repeat
+有四个属性值供选择:no-repeat(不重复)、repeat-x(x方向重复铺叠)、repeat-y(y方向重复铺叠)
+repeat(x方向和y方向同时重复铺叠)。
+
+*颜色的三种表示方式
+  以下几种写法都表示红色：
+  background-color: red;
+  background-color: #ff0000;
+  background-color: rgb(255,0,0);
+
+*background-attachment;
+ fixed： 背景图片在盒子滚动的时候固定。
+ scroll：背景图片在盒子滚动的时候跟着滚动。
+
+*css精灵
+“css精灵”，英语css sprite，所以也叫做“css雪碧”技术。是一种CSS图像合并技术，该方法是将小
+图标和背景图像合并到一张图片上，然后利用css的背景定位来显示需要显示的图片部分。
+css精灵有什么优点，就是减少了http请求。比如4张小图片，原本需要4个http请求。但是用了css精灵，
+小图片变为了一张图，http请求只有1个了。
+就是利用css background的特性来实现在大图中切小图。
+
+
+-->
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>background属性的学习</title>
+
+    <style type="text/css">
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .box400{
+            width: 400px;
+            height: 400px;
+        }
+
+        /*
+        1.基本用发测试
+          以下是简写方式，分别代表background-color、background_repeat、background-image
+          这三者的顺序不是固定的，可随意排列。
+        */
+        .test1{
+            background:  #f1f1f1 repeat-y url(../res/img/purple.jpg);
+        }
+        /*
+        2.背景图片的定位
+        */
+        .test2{
+            background:#f1f1f1 no-repeat url(../res/img/purple.jpg) center;
+        }
+
+        .test3{
+            background:#f1f1f1 no-repeat url(../res/img/purple.jpg) 10px 30px;
+        }
+        /*
+        3.背景不可移动 background-attachment: fixed;
+        */
+        .test1{
+            background:  #f1f1f1 repeat url(../res/img/purple.jpg) fixed;
+            /*background-attachment: fixed;*/
+        }
+
+
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="test1 box400"></div>
+
+<p>-----------------------------并不华丽的分割线-----------------------</p>
+
+<div class="test2 box400"></div>
+
+<p>-----------------------------并不华丽的分割线-----------------------</p>
+
+<div class="test3 box400"></div>
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
