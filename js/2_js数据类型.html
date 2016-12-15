@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!--
+1.typeof
+用来检测一个变量的数据类型。
+
+2.undefined类型：
+a.在一个变量被生命但是没被初始化的时候返回undefined。
+b.对尚未申明的变量只能执行一个操作那就是typeof，而且未申明变量typeof后的值
+c.和声明了未初始化的typeof值一样都是undefined。
+
+3.null类型：
+a.undefined派生自null,所以undefined == null返回true。
+b.如果翔定义一个用来存对象的变量，最好将其初始化为null。
+c.从逻辑角度来看，null 值表示一个空对象指针，这也正是使用typeof null返回"object"的原因。
+
+4.boolean类型：
+a.分为true和false，注意true等价于1，false不等价于0。
+b.任何的其它类型都可以通过Boolean()转换成两个boolean值中的一种。
+
+5.number类型：
+a.整型：一般常见的为10进制（56），0开头的为8进制（056），0x开头的为16进制。
+b.浮点型：.34这样的写法是对的，但是不推荐。
+c.0.1 加0.2的结果不是0.3，而是0.30000000000000004,存在舍入误差。
+d.最大值在Number.MAX_VALUE中大多数浏览器是.7976931348623157e+308，
+  最小值在Number.MIN_VALUE，大多数浏览器中为5e-324。
+e.isNaN():判断变量是否为NaN，可以用来判断对象。
+  Number():将其它数据类型转换成number，)可以用于任何数据类型。
+  parseInt():专门用来将字符串转换成整型，可以提供第二个参数，表示转换成多少进制。
+  parseFloat:专门用来将字符串转换成浮点型。
+
+
+6.string类型：
+
+-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>js中的数据类型</title>
+
+    <script type="text/javascript">
+
+        /*
+        5.number类型
+        */
+        /*
+        //---整数
+        var num1 = 56;
+        var num2 = 056;
+        var num3 = 0x56;
+        console.log("num1="+num1+"  num2="+num2+"  num3="+num3);
+        console.log(088);//本意是想表示为八进制，但是八进制位上最大为7就自动转换成十进制。88
+        //---浮点数
+        var num3 = 1.2;
+        var num4 = .2;//没错 但是不推荐
+        var num5 = 1.;//自动转换成整型
+        console.log("num3="+num3+"  num4="+num4+"  num5="+num5);
+        if((0.1+0.2)==0.3){
+        }else{
+            console.log("存在舍入误差，不要这样做测试！")
+            console.log("0.1+0.2="+(0.1+0.2));
+        }
+        console.log("最大值："+Number.MAX_VALUE);
+        console.log("最小值："+Number.MIN_VALUE);
+        //---isNaN
+        console.log(isNaN(123));//false
+        console.log(isNaN(true));//false
+        console.log(isNaN(false));//false
+        console.log(isNaN(NaN));//true
+        console.log(isNaN(undefined));//true
+        console.log("--------------并不华丽的分割线-----------");
+        //---转换
+        console.log(Number(true));//1
+        console.log(Number(false));//0
+        console.log(Number(undefined));//NaN
+        console.log(Number(null));//---0
+        console.log(Number(""));//---0
+        console.log(Number(" "));//---0
+        console.log(Number("abc"));//NaN
+        console.log(Number("123"));//123
+        console.log(Number("a12a3"));//---NaN
+        console.log("--------------并不华丽的分割线-----------");
+        console.log(parseInt(true));//---NaN
+        console.log(parseInt(false));//--NaN
+        console.log(parseInt(undefined));//NaN
+        console.log(parseInt(null));//NaN
+        console.log(parseInt(""));//NaN
+        console.log(parseInt(" "));//NaN
+        console.log(parseInt("abc"));//NaN
+        console.log(parseInt("123"));//123
+        console.log(parseInt("a12a3"));//--NaN
+        console.log("--------------并不华丽的分割线-----------");
+        console.log(parseInt("10"));
+        console.log(parseInt("10",2));
+        */
+
+
+        /*
+        4.boolean类型
+        */
+        /*
+        console.log(Boolean(""));//false
+        console.log(Boolean(" "));//true
+        console.log(Boolean("abc"));//true
+        console.log(Boolean(0));//false
+        console.log(Boolean(-1));//true
+        console.log(Boolean(1));//true
+        console.log(Boolean(undefined));//--false
+        var obj = new Object();
+        console.log(Boolean(obj));//---true
+        console.log(Boolean(null));//---false
+        console.log(Boolean(NaN));//---false
+        */
+
+        /*
+        3.null类型
+        */
+        /*
+        console.log(undefined == null);//true
+        console.log(typeof null);//object
+        var obj = null;
+        console.log(typeof obj);//object
+        */
+
+        /*
+        2.undefined类型
+        */
+        /*
+        var temp;
+        console.log(typeof temp);//undefined
+        console.log(typeof undefinedVar)//undefined
+        console.log(undefinedVar)//报错！！（这也是声明未定义和未声明之间的区别，即使它们typeof都为undefined）
+        */
+
+
+        /*
+        1.typeof的使用
+        */
+        /*
+        console.log( typeof(true) );//boolean
+        console.log(typeof 123);//number
+        console.log(typeof "123")//string
+        console.log(typeof console);//object
+        console.log(typeof temp);//temp未声明，undefined
+        console.log(typeof NaN);//number
+        console.log(typeof undefined);//undefined
+        */
+
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!--
+
+if 、for、 do while、while、break、continue语句和java等其它语言一致。
+
+1.for-in语句:
+用来迭代对象里面的属性,不是用来遍历数组里面的值的。
+
+2.label标签：
+label标签添加后可以由break、continue来调用，一般用来跳出循环。
+
+3.with语句（不建议使用）：
+将代码的作用域设置到一个特定的对象中，简化多次编写同一对象的作业。
+
+4.switch case 语句：
+用法和java等其它语言类似但是不同的是js中switch的可以说任意的数据类型。
+
+
+-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>js的基本语法学习</title>
+
+
+    <script type="text/javascript">
+
+
+        /*
+        4.switch中使用字符串类型
+        */
+       /* testCase("xiaoming");
+        function testCase(name) {
+            switch (name){
+                case "xiaoming":{
+                    document.writeln("我是小明");
+                    break;
+                }
+                case "xiaohua":{
+                    document.writeln("我是小花");
+                    break;
+                }
+            }
+        }*/
+
+
+        /*
+        3.with语句的使用：
+        */
+        //使用前
+        /*var qs = location.search.substring(1);
+        var hostName = location.hostname;
+        var url = location.href;
+        //使用with后
+        with(location){
+            var qs = search.substring(1);
+            var hostName = hostname;
+            var url = href;
+            var test = "test not in";
+            document.writeln(url);
+            document.writeln(test);
+        }*/
+
+
+        /*
+        2.label标签的使用：
+        当i=2&&j==2时，break top 时是直接退出了两层for循环（即break到label），
+        当常规的break的时候只是退出写break语句的那个for循环。
+        */
+       /* top:
+                for (var i = 0; i < 5; i++) {
+                    for (var j = 0; j < 5; j++) {
+                        if (i == 2 && j == 2) {
+                            break top;
+                        }
+                        console.log("i=" + i + " j=" + j);
+                    }
+                }
+
+        for (var i = 0; i < 5; i++) {
+            for (var j = 0; j < 5; j++) {
+                if (i == 2 && j == 2) {
+                    break;
+                }
+                console.log("i=" + i + " j=" + j);
+            }
+        }*/
+
+
+        /*
+         1.for-in语句的使用
+         用来迭代对象里面的属性
+         */
+        /* for (var propName in window) {
+         document.writeln(propName);
+         }
+         //----下面的输出结果是0,1 所以for-in不是用来遍历数组的
+         var names =new Array("xiaohua" , "xiaoming");
+         for(var name in names){
+         document.writeln(name);
+         }*/
+
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+</html>
