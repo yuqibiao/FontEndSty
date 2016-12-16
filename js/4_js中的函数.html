@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!--
+
+1.理解参数：
+a.js函数中参数的声明只是为了代码的可读性，传入的个数和声明的个数可以不一样，
+  完全可以不用声明参数，而且声明参数的时候不要带var。
+b.arguments是传入的参数"数组"(不是Array，可理解为数组)，可以通过这个数组得到传入的参数值。
+c.arguments中的值始终与参数的值保持一致，当参数值改变时，arguments中对应的参数的值也会改变，
+  但是要注意不能认为它们在同一块内存中，只是值保持同步，
+
+2.没有重载：
+a.js中没有类似java中的重载的概念，因为重载是根据返回值类型，参数个数来区分的。如果定义两个
+  名称相同的函数，则写在后面的一个起作用。
+
+-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>js中函数的应用</title>
+
+    <script type="text/javascript">
+
+        /*
+        2.没有重载
+        */
+
+        testOverLode();
+        function testOverLode() {
+            console.log("写在前面的方法。");
+        }
+        
+        function testOverLode() {
+            console.log("写在后面的方法。");
+        }
+
+
+
+        /*
+        1.参数的理解
+        可接受任意个数的参数
+        */
+        //getParamValue(1,2 ,3);
+        function getParamValue(param1 , param2 ,param3) {
+            /*这里给第一个参数重新赋值了*/
+            arguments[0] = 100;
+            param3 = 300;
+            console.log(param1);//---100
+            console.log(param2);//2
+            console.log(arguments[2]);//--300
+        }
+
+        //console.log(getSum(1,2,3,4))
+        function getSum(){
+            var result = 0;
+            var paramNum = arguments.length;
+            for(var i=0 ; i<paramNum ; i++){
+                result += arguments[i];
+            }
+            return result;
+        }
+
+
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+</html>
