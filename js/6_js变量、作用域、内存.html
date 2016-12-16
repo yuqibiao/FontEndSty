@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!--
+
+
+
+-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>js中的变量、作用域、内存</title>
+
+    <script type="text/javascript">
+
+        /*
+        *查询标识符
+        */
+        console.log(typeof  test3());//string
+        var v = document;//Object
+        function test3() {
+            var v = "字符串";
+            return v;
+
+        }
+        
+        console.log(typeof  test3());//undefined
+        var v = document;//Object
+        function test3() {
+            //var v = "字符串";
+            return v;
+            
+        }
+        console.log(typeof  test3());//object
+
+        /*
+        * js中不像java有块级作用域
+        */
+        for(var i=0 ; i<=10 ; i++){
+            var temp = i;
+        }
+        console.log(temp);//10
+        if (true) {
+            var color = "blue";
+        }
+        console.log(color);//blue
+
+
+        /*
+        *延长作用域
+        */
+        //console.log(test1());
+        function test2() {
+            try {
+
+            }catch (err){
+            }
+            //err在IE8以前能在外部访问
+            return err.toString();
+        }
+        function test1() {
+            with(location){
+                var info = href;
+            }
+            /*info延长了作用域链*/
+            return info;
+        }
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
