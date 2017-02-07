@@ -15,6 +15,9 @@ c.arguments中的值始终与参数的值保持一致，当参数值改变时，
 a.js中没有类似java中的重载的概念，因为重载是根据返回值类型，参数个数来区分的。如果定义两个
   名称相同的函数，则写在后面的一个起作用。
 
+3.函数中的参数都是值传递，包括传入的值是对象的时候也是按值传递。java中也是一样的（以前理解错了）
+  参数是基本类型时传递的是基本类型字面量值的拷贝，参数是对象是传递的是对象在堆中地址值的拷贝。
+
 -->
 
 <head>
@@ -22,6 +25,41 @@ a.js中没有类似java中的重载的概念，因为重载是根据返回值类
     <title>js中函数的应用</title>
 
     <script type="text/javascript">
+
+
+        /*
+        3.函数中的参数都是值传递
+        */
+        //3.1
+        function addNum(num) {
+            num +=100;
+            return num;
+        }
+        var num1 = 200;
+        var num = addNum(num1);
+        console.log("num1="+num1);//200
+        console.log("num="+num);//300
+        console.log("==============分割线==============")
+        //3.2
+        function chgName(obj){
+            obj.name = "yyyu";
+        }
+        var person = new Object();
+        person.name = "yuqibiao";
+        chgName(person);
+        console.log("name 1= "+person.name);//yyyu不是yuqibiao
+        console.log("==============分割线==============")
+        //3.3
+        function setName(obj) {
+            obj.name = "yyyu2";
+            obj = new Object();//---将
+            obj.name = "禹启标";
+        }
+        var person2 = new Object();
+        person2.name = "yuqibiao";
+        setName(person2);
+        console.log("name 2= "+person2.name);//yyyu2不是禹启标
+
 
         /*
         2.没有重载

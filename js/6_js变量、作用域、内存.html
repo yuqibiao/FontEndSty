@@ -3,8 +3,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 
 <!--
+执行环境：定义了变量或函数有权访问的其他数据，决定了它们各自的行为。每个函数都有自己的执行环境。
+全局执行环境：最外围的一个执行环境，根据ECMAScript实现所在的宿主环境不同，表示执行环境的对象不同，
+             Web浏览器中全局执行环境被认为你是window对象。
+作用域链：保证对执行环境有权访问的变量的有序访问。（有权->有序）
 
+块级作用域：js中没有块级作用域。
 
+声明变量：使用var声明变量会被添加到最接近的环境变量中（with语句中声明也是被添加到对应的函数执行环境），
+         如果初始化时没有使用var声明的变量会被添加到全局执行环境中去。
+
+标识符查询：搜索过程从作用域链的前端开始，向上逐级查询与给定名字匹配的标识符。如果在局部环境中找到了该标识符，
+           搜索过程停止，变量就绪。如果在局部环境中没有找到该变量名，则继续沿作用域链向上搜索。搜索过程将一
+           直追溯到全局环境的变量对象。如果在全局环境中也没有找到这个标识符，则意味着该变量尚未声明
+
+垃圾回收：一般有标记清除，引用计数。
+标记清除：当变量进入环境（例如，在函数中声明一个变量）时，就将这个变量标记为“进入环境”。。而当变量离开环境时，
+         则将其标记为“离开环境”。垃圾收集器在运行的时候会给存储在内存中的所有变量都加上标记，它会去掉环境中的
+         变量以及被环境中的变量引用的变量的标记，在此之后再被加上标记的变量将被视为准备删除的变量。
+引用计数：当声明了一个变量并将一个引用类型值赋给该变量时，则这个值的引用次数就是1。如果同一个值又被赋给另一个变量，
+         则该值的引用次数加1。相反，如果包含对这个值引用的变量又取得了另外一个值，则这个值的引用次数减1。当这个值
+         的引用次数变成0 时，则说明没有办法再访问这个值了，因而就可以将其占用的内存空间回收回来。
+比较：标记清除的回收方法优于引用计数，引用计数的方法可能会出现循环引用，这样会导致内存释放不了。到2008 年为止，IE、
+      Firefox、Opera、Chrome 和Safari 的JavaScript 实现使用的都是标记清除式的垃圾收集策略（或类似的策略），只
+      不过垃圾收集的时间间隔互有不同。而COM 对象的垃圾收集机制采用的就是引用计数策略,即使IE 的JavaScript 引擎是
+      使用标记清除策略来实现的，但JavaScript 访问的COM 对象依然是基于引用计数策略的。
 
 -->
 
@@ -15,24 +38,53 @@
     <script type="text/javascript">
 
         /*
+        *作用域链
+        */
+        var scope = "global";
+        function test5() {//等同于test4
+            var scope;
+            console.log("scope = " +scope); // undefined
+            scope = "inner";
+            console.log("scope = "+scope);//inner
+        }
+        test5();
+        console.log("========分割线=========");
+
+        var scope = "global";
+        function test4() {
+            console.log("scope = " +scope); // undefined
+            var scope = "inner";
+            console.log("scope = "+scope);//inner
+        }
+        test4();
+
+        /*
         *查询标识符
         */
-        console.log(typeof  test3());//string
-        var v = document;//Object
-        function test3() {
-            var v = "字符串";
-            return v;
+        var color = "red";
+        function test3(){
+            var color = "green"
+            return color;
+        }
+        console.log("color = "+color);
+        console.log("test3() color = "+test3());
 
+
+        /*
+         *变量的声明
+         */
+        function test2(){
+            num2 = 100;//没有使用var 则num2被添加到全局执行环境中去了
         }
-        
-        console.log(typeof  test3());//undefined
-        var v = document;//Object
-        function test3() {
-            //var v = "字符串";
-            return v;
-            
+        test2();
+        console.log("num2="+num2);//100
+
+        function test1(){
+            var num1 = 200;//使用var声明变量，num1被添加到了test1的函数执行环境
         }
-        console.log(typeof  test3());//object
+        test1();
+        //console.log("num1="+num1);//报错
+
 
         /*
         * js中不像java有块级作用域
@@ -45,27 +97,6 @@
             var color = "blue";
         }
         console.log(color);//blue
-
-
-        /*
-        *延长作用域
-        */
-        //console.log(test1());
-        function test2() {
-            try {
-
-            }catch (err){
-            }
-            //err在IE8以前能在外部访问
-            return err.toString();
-        }
-        function test1() {
-            with(location){
-                var info = href;
-            }
-            /*info延长了作用域链*/
-            return info;
-        }
 
     </script>
 
