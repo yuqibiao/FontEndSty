@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+
+
+-->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="wrapper">
+
+    <h3>事件捕获</h3>
+    <ul id="container">
+        <li id="item1">html</li>
+        <li id="item2">css</li>
+        <li id="item3">js</li>
+        <li id="item4">jquey</li>
+    </ul>
+
+    <p id="p_show_parent_info">parent</p>
+    <p id="p_show_child_info">child</p>
+    <p id="p_show">last show</p>
+
+</div>
+
+</body>
+
+<script type="application/javascript">
+
+document.getElementById("wrapper").addEventListener("click" ,  function () {
+    console.log("parent得事件被回调=======");
+    document.getElementById("p_show_parent_info").textContent="parent得事件被回调";
+} , false);
+
+document.getElementById("item1").addEventListener("click" , function () {
+    console.log("child得事件被回调=======");
+    document.getElementById("p_show_child_info").textContent="child得事件被回调";
+} , false);
+
+</script>
+
+</html>

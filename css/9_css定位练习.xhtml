@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>css定位小练习</title>
+
+    <style type="text/css">
+
+        body{
+            font: 14px/1.5 "PingFang SC","微软雅黑","Microsoft YaHei",Helvetica,"Helvetica Neue",Tahoma,Arial,sans-serif;
+            color: #99a1a6;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        li{
+            list-style: none;
+        }
+
+        ul{
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .container{
+            width: 1080px;
+            height: 100%;
+            margin: 0  auto;
+            background-color: #666666;
+        }
+
+        .header{
+            width: 100%;
+            height: 80px;
+            background-color: #F8FAFC;
+        }
+
+        .header .logo{
+            height: 40px;
+            margin-top: 20px;
+            margin-left: 20px;
+            float: left;
+        }
+
+        .header ul{
+            margin-top: 0px;
+            height: 80px;
+            line-height: 80px;
+            margin-left: 50px;
+            float: left;
+            display: inline-block;
+        }
+
+        .header ul li{
+            padding: 0px 4px ;
+            float: left;
+        }
+
+        .header .search{
+            height: 80px;
+            line-height: 80px;
+            margin-left: 50px;
+            background-color: red;
+            float: left;
+        }
+
+        .header .search input{
+            width: 150px;
+            height: 25px;
+            border: solid 1px pink;
+        }
+        .header .search input:hover{
+            border: 1px solid #ff57ed;
+        }
+        .header .search input:focus{
+            border: 1px solid #ff57ed;
+            background-color: #ffe2f4;
+        }
+        .header .search span{
+            width: 25px;
+            height: 25px;
+            background-color: pink;
+            color: white;
+            font-size: 14px;
+            position: relative;
+            left: 150px;
+            display: inline-block;
+        }
+
+        .content{
+            width: 100%;
+            height: 500px;
+            background-color: #FFFFFF;
+        }
+
+        .footer{
+            width: 100%;
+            height: 100px;
+            overflow: hidden;
+            background-color: #F8FAFC;
+        }
+
+        .footer ul{
+            margin-top: 10px;
+            padding: 0px;
+            overflow: hidden;
+        }
+
+        .footer ul li{
+            margin-left: 10px;
+            float: left;
+        }
+
+        .footer  span{
+            overflow: hidden;
+            margin-left: 5px;
+            margin-top: 2px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <img class="logo" src="../res/img/purple.jpg" alt="logo"/>
+        <ul >
+            <li>免费课程</li>
+            <li>职业路线</li>
+            <li>实战</li>
+            <li>猿问</li>
+        </ul>
+        <div class="search">
+            123
+            <input  type="text" />
+            <span>搜索</span>
+        </div>
+    </div>
+
+    <div class="content">
+
+    </div>
+
+    <div class="footer">
+        <div style="margin: 20px">
+        <ul>
+            <li>合作企业</li>
+            <li>人才招聘</li>
+            <li>联系我们</li>
+            <li>讲师招聘</li>
+            <li>常见问题</li>
+            <li>问题反馈</li>
+        </ul>
+            <span >© 2017 imooc.com  京ICP备 13046642号-2</span>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
