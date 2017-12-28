@@ -8,43 +8,64 @@
 
     <style type="text/css">
 
-        body{
-            font: 14px/1.5 "PingFang SC","微软雅黑","Microsoft YaHei",Helvetica,"Helvetica Neue",Tahoma,Arial,sans-serif;
+        body {
+            font: 14px/1.5 "PingFang SC", "微软雅黑", "Microsoft YaHei", Helvetica, "Helvetica Neue", Tahoma, Arial, sans-serif;
             color: #99a1a6;
             padding: 0px;
             margin: 0px;
         }
 
-        li{
+        li {
             list-style: none;
         }
 
-        ul{
+        ul, input, p, span {
             padding: 0px;
             margin: 0px;
         }
 
-        .container{
+        a {
+            text-decoration: none;
+            color: #99a1a6;
+        }
+
+        a:link {
+            color: #99a1a6;
+        }
+
+        a:visited {
+            color: magenta;
+        }
+
+        a:hover {
+            color: pink;
+        }
+
+        a:active {
+            color: palegoldenrod;
+        }
+
+        .container {
             width: 1080px;
             height: 100%;
-            margin: 0  auto;
+            margin: 0 auto;
             background-color: #666666;
         }
 
-        .header{
+        .header {
             width: 100%;
             height: 80px;
             background-color: #F8FAFC;
         }
 
-        .header .logo{
+        .header .logo {
             height: 40px;
             margin-top: 20px;
             margin-left: 20px;
             float: left;
         }
 
-        .header ul{
+        .header ul {
             margin-top: 0px;
             height: 80px;
             line-height: 80px;
@@ -53,67 +74,174 @@
             display: inline-block;
         }
 
-        .header ul li{
-            padding: 0px 4px ;
+        .header ul li {
+            padding: 0px 4px;
             float: left;
         }
 
-        .header .search{
+        .header .search {
             height: 80px;
             line-height: 80px;
             margin-left: 50px;
-            background-color: red;
-            float: left;
+            font-size: 0px; /*去除换行带来的空格*/
+            display: inline-block;
         }
 
-        .header .search input{
+        .header .search input {
             width: 150px;
             height: 25px;
             border: solid 1px pink;
         }
-        .header .search input:hover{
+
+        .header .search input:hover {
             border: 1px solid #ff57ed;
         }
-        .header .search input:focus{
+
+        .header .search input:focus {
             border: 1px solid #ff57ed;
             background-color: #ffe2f4;
         }
-        .header .search span{
-            width: 25px;
-            height: 25px;
+
+        .header .search button {
+            width: 50px;
+            height: 27px;
             background-color: pink;
             color: white;
-            font-size: 14px;
-            position: relative;
-            left: 150px;
+            font-size: 13px;
             display: inline-block;
+            border: 0px;
         }
 
-        .content{
+        .header .user-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            line-height: 80px;
+            display: inline-block;
+            overflow: hidden;
+            position: relative;
+            float: right;
+            top: 15px;
+            right: 30px;
+        }
+
+        .header .user-icon img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .content {
             width: 100%;
             height: 500px;
+            padding: 10px 0px ;
             background-color: #FFFFFF;
+            color: #FFFFFF;
+            overflow: hidden;
         }
 
-        .footer{
+        .content .left {
+            width: 80px;
+            height: 100%;
+            background-color: pink;
+            float: left;
+        }
+
+        .content .right {
+            width: 80px;
+            height: 100%;
+            background-color: pink;
+            float: right;
+        }
+
+        .content .top_center_bottom {
+            width: 900px;
+            float: left;
+        }
+
+        .content .top {
+            height: 80px;
+            width: 900px;
+            margin-left: 10px;
+            margin-right: 10px;
+            background-color: pink;
+            font-size: 20px;
+            line-height: 80px;
+            text-align: center;
+        }
+
+        .content .center {
+            height: 320px;
+            width: 900px;
+            margin: 10px;
+            font-size: 15px;
+            background-color: pink;
+        }
+
+        .content .center p {
+            padding: 50px;
+        }
+
+        .content .bottom {
+            height: 80px;
+            width: 900px;
+            margin-left: 10px;
+            margin-right: 10px;
+            background-color: pink;
+        }
+
+        .content .bottom .album {
+            width: 50px;
+            height: 70px;
+            float: left;
+            position: relative;
+            margin: 5px 0px 5px 5px;
+        }
+
+        .content .bottom .icon {
+            width: 50px;
+            height: 70px;
+            overflow: hidden;
+        }
+
+        .content .bottom span {
+            width: 50px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            background-color: #666666;
+            display: inline-block;
+            position: absolute;
+            opacity: 0.5;
+            bottom: 0px;
+        }
+
+        .content .left p,.content .right p{
+            width: 15px;
+            margin-left: 32px;
+            margin-top: 100px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .footer {
             width: 100%;
             height: 100px;
             overflow: hidden;
             background-color: #F8FAFC;
         }
 
-        .footer ul{
+        .footer ul {
             margin-top: 10px;
             padding: 0px;
             overflow: hidden;
         }
 
-        .footer ul li{
+        .footer ul li {
             margin-left: 10px;
             float: left;
         }
 
-        .footer  span{
+        .footer span {
             overflow: hidden;
             margin-left: 5px;
             margin-top: 2px;
@@ -128,34 +256,117 @@
 
     <div class="header">
         <img class="logo" src="../res/img/purple.jpg" alt="logo"/>
-        <ul >
-            <li>免费课程</li>
-            <li>职业路线</li>
-            <li>实战</li>
-            <li>猿问</li>
+        <ul>
+            <li><a href="#">免费课程</a></li>
+            <li><a href="#">职业路线</a></li>
+            <li><a href="#">实战</a></li>
+            <li><a href="#">猿问</a></li>
         </ul>
         <div class="search">
-            123
-            <input  type="text" />
-            <span>搜索</span>
+            <input type="text"/>
+            <button>搜索</button>
+        </div>
+        <div class="user-icon">
+            <img src="../res/img/purple.jpg" alt="icon"/>
         </div>
     </div>
 
     <div class="content">
+        <div class="left">
+            <p>
+                一把辛酸泪<br/>，满纸荒唐言<br/>。
+            </p>
+        </div>
 
+        <div class="top_center_bottom">
+            <div class="top">
+                <p>好了歌注</p>
+            </div>
+            <div class="center">
+                <p>
+                    陋室空堂，当年笏满床；<br/>
+                    衰草枯杨，曾为歌舞场；<br/>
+                    蛛丝儿结满雕梁，绿纱今又在蓬窗上。<br/>
+                    说甚么脂正浓、粉正香，如何两鬓又成霜？<br/>
+                    昨日黄土陇头埋白骨，今宵红绡帐底卧鸳鸯。<br/>
+                    金满箱，银满箱，转眼乞丐人皆谤。<br/>
+                    正叹他人命不长，那知自己归来丧？<br/>
+                    训有方，保不定日后作强梁。择膏梁，谁承望流落在烟花巷！<br/>
+                    因嫌纱帽小，致使锁枷扛；昨怜破袄寒，今嫌紫蟒长。<br/>
+                    乱烘烘你方唱罢我登场，反认他乡是故乡。<br/>
+                    甚荒唐，到头来都是为他人作嫁衣裳。<br/>
+                </p>
+            </div>
+            <div class="bottom">
+                <div class="album">
+                    <div class="icon">
+                        <img src="../res/img/purple.jpg" alt="icon" height="70"/>
+                    </div>
+                    <span style="">图片</span>
+                </div>
+                <div class="album">
+                    <div class="icon">
+                        <img src="../res/img/purple.jpg" alt="icon" height="70"/>
+                    </div>
+                    <span style="">图片</span>
+                </div>
+                <div class="album">
+                    <div class="icon">
+                        <img src="../res/img/purple.jpg" alt="icon" height="70"/>
+                    </div>
+                    <span style="">图片</span>
+                </div>
+                <div class="album">
+                    <div class="icon">
+                        <img src="../res/img/purple.jpg" alt="icon" height="70"/>
+                    </div>
+                    <span style="">图片</span>
+                </div>
+                <div class="album">
+                    <div class="icon">
+                        <img src="../res/img/purple.jpg" alt="icon" height="70"/>
+                    </div>
+                    <span style="">图片</span>
+                </div>
+                <div class="album">
+                    <div class="icon">
+                        <img src="../res/img/purple.jpg" alt="icon" height="70"/>
+                    </div>
+                    <span style="">图片</span>
+                </div>
+                <div class="album">
+                    <div class="icon">
+                        <img src="../res/img/purple.jpg" alt="icon" height="70"/>
+                    </div>
+                    <span style="">图片</span>
+                </div>
+                <div class="album">
+                    <div class="icon">
+                        <img src="../res/img/purple.jpg" alt="icon" height="70"/>
+                    </div>
+                    <span style="">图片</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="right">
+            <p>
+                都云作者痴<br/>，谁解其中味<br/>。
+            </p>
+        </div>
     </div>
 
     <div class="footer">
         <div style="margin: 20px">
-        <ul>
-            <li>合作企业</li>
-            <li>人才招聘</li>
-            <li>联系我们</li>
-            <li>讲师招聘</li>
-            <li>常见问题</li>
-            <li>问题反馈</li>
-        </ul>
-            <span >© 2017 imooc.com  京ICP备 13046642号-2</span>
+            <ul>
+                <li>合作企业</li>
+                <li>人才招聘</li>
+                <li>联系我们</li>
+                <li>讲师招聘</li>
+                <li>常见问题</li>
+                <li>问题反馈</li>
+            </ul>
+            <span>© 2017 imooc.com  京ICP备 13046642号-2</span>
         </div>
     </div>
 
